@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Monitoreo de Accesos</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>SMA</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="active"><i class="icon-home"></i>Inicio</a></li>
+                    <li><a href="#"><i class="icon-calendar"></i>Horario</a></li>
+                    <li><a href="#"><i class="icon-chart"></i>Gráficas</a></li>
+                    <li><a href="#"><i class="icon-report"></i>Reportes</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href="#"><i class="icon-logout"></i>Desconectarse</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h2>Alertas De Acceso</h2>
+                <div class="notifications">
+                    <i class="icon-bell"></i>
+                    <span class="notification-count">1</span>
+                </div>
+            </header>
+
+            <!-- Alert Cards Container -->
+            <div class="alerts-container">
+                <!-- Alert cards will be added here dynamically -->
+            </div>
+
+            <!-- Statistics Section -->
+            <section class="statistics">
+                <div class="stat-cards">
+                    <div class="stat-card active-classrooms">
+                        <h3>Salones en clase</h3>
+                        <div class="stat-number">3</div>
+                    </div>
+                    <div class="stat-card empty-classrooms">
+                        <h3>Salones sin clase</h3>
+                        <div class="stat-number">3</div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <h3>Salones con más cantidad de accesos no autorizados</h3>
+                        <div id="accessChart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Horas con más cantidad de accesos no autorizados</h3>
+                        <div id="timeChart"></div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Actividad Reciente</h3>
+                    <div class="activity-list">
+                        <!-- Activity items will be added here dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html> 
