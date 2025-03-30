@@ -4,12 +4,12 @@
 #include <WiFiUdp.h>
 
 // Configuración del WiFi
-#define WIFI_SSID "IZZI-4E38"
-#define WIFI_PASSWORD "grgnekm6"
+#define WIFI_SSID "" // Importante
+#define WIFI_PASSWORD "" // Importante
 
 // Configuración de Firebase
-#define FIREBASE_HOST "monitoreo-5a969-default-rtdb.firebaseio.com"
-#define FIREBASE_API_KEY "AIzaSyA2ua_OCt1iEi3K3rh0PzqvbX483JmaoTA"
+#define FIREBASE_HOST "" // Importante
+#define FIREBASE_API_KEY "" // Importante
 
 // Configuración del sensor
 #define FOTOSENSOR_PIN A0
