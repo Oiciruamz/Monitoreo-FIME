@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sistema de Monitoreo de Accesos</title>
         <link rel="stylesheet" href="styles/inicio.css">
+        <link rel="stylesheet" href="styles/graphs.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"></script>
     </head>
 </head>
 <body>
@@ -47,10 +49,12 @@
                 <!-- Incident graphs-->
                 <div class="graph-container">
                     <h3>Gráfica de incidentes</h3>
+                    <canvas id="incidents" class="charts"></canvas>
                 </div>
                 <!-- Daily access -->
                 <div class="graph-container">
                     <h3>Accesos diarios</h3>
+                    <canvas id="dailyA" class="charts"></canvas>
                 </div>
             </section>
 
@@ -59,9 +63,13 @@
             <!-- Weekly Report Section-->
             <h2>Reporte Semanal de Accesos No Autorizados</h2><br>
             <section class="graph-section">
-                <!-- Incident graphs-->
-                <div class="graph-container">
+                <!-- Weekly Report-->
+                <div class="graph-container" id="weekly-report">
                     <h3>Semana del 1 al 7 de Marzo 2025</h3>
+                    <p>Durante la última semana, se registraron 42 accesos no autorizados 
+                        en los salones monitoreados. El salón con más incidentes fue el 9103, 
+                        mientras que el horario más crítico fue el N2 (Nocturno - Segunda hora).
+                    </p>
                 </div>
                 <!-- Incident graphs-->
                 <div class="graph-container">
@@ -72,5 +80,6 @@
         </main>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/graphs.js"></script>
 </body>
 </html>
