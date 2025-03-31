@@ -12,20 +12,35 @@ const alertData = [
 // Función para crear una tarjeta de alerta
 function createAlertCard(alert) {
     return `
+     <h2>Alertas De Acceso</h2>
+     <span class="material-symbols-outlined">
+chevron_left
+</span>
         <div class="alert-card">
             <div class="alert-header">
-                <span>Salón ${alert.salon}</span>
-                <span>${alert.tiempo}</span>
+                <span><b>Salón:</b> ${alert.salon}</span>
+                <span class="material-symbols-outlined">more_vert</span>
+            </div>
+            <div class="alert-animation">
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+              <span class="material-symbols-rounded">warning</span>
             </div>
             <div class="alert-body">
                 <h3>${alert.tipo}</h3>
-                <p>Estado: ${alert.estado}</p>
+                <span><b>Tiempo:</b> ${alert.tiempo}</span>
+                <p><b>Estado:</b> ${alert.estado}</p>
             </div>
             <div class="alert-actions">
                 <button class="btn-desactivar">Desactivar</button>
                 <button class="btn-notificar">Notificar</button>
             </div>
         </div>
+        <span class="material-symbols-outlined">
+chevron_right
+</span>
     `;
 }
 
