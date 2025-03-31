@@ -438,39 +438,6 @@ color: var(--secondary-color);
     font-size: .7rem;
 }
 
-/* Graphs styles */
-.graph-section{
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(430px, 2fr));
-    grid-template-rows: minmax(450px, 1fr);
-    margin: 1.5rem;
-}
-.graph-section h3{
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    color: #FFFFFF;
-    background-color: #040CA8;
-    width: fit-content;
-    padding: 0px 20px;
-    height: 40px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: -20px; 
-    left: 20px;
-}
-.graph-container{
-    position: relative;
-    height: 415px;
-    width: 400px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {

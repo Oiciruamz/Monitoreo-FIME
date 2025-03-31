@@ -1,0 +1,55 @@
+/* Graphs styles */
+.graph-section{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.graph-section h3{
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    color: #FFFFFF;
+    background-color: #040CA8;
+    width: fit-content;
+    padding: 0px 20px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -20px; 
+    left: 20px;
+}
+.graph-container {
+    position: relative;
+    min-height: 415px;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin: 1.5rem;
+}
+
+#weekly-report {
+    min-height: 200px;
+    align-self: start;
+    padding: 20px;
+}
+
+#weekly-report p{
+    text-align: justify;
+    width: 93%;
+    padding: 20px;
+    line-height: 1.5;   
+}
+.charts{
+    position: absolute;
+    top: 50px;
+    left: 25px;
+    max-width: 350px;
+    max-height: 350px;
+}
