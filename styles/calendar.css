@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&display=swap');
+
+
+#calendar-container {
+    background-color: #FFFFFF; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para diferenciar el contenedor */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px auto; /* Centrar horizontalmente y agregar margen superior/inferior */
+    max-width: 90%; /* Limitar el ancho máximo del contenedor */
+    border: 1px solid #E0E0E0; /* Borde gris claro */
+}
+
+/* Ajustar el texto del encabezado del calendario */
+.calendar-header {
+    font-family: 'Anek Bangla', sans-serif; /* Fuente personalizada */
+    font-size: 1.625rem; /* Tamaño de fuente */
+    font-weight: 600; /* Peso de fuente semi-negrita */
+    color: #000000; /* Color del texto */
+    text-align: left; /* Centrar el texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Ajustar el calendario interno */
+#calendar {
+    margin-top: 20px; /* Espaciado superior dentro del contenedor */
+}
+
+
+.fc {
+
+    & .fc-col-header-cell-cushion {
+        font-weight: normal; /* Quitar negrita */
+        font-size: 14px; /* Tamaño de fuente */
+        color: #333; /* Color del texto */
+        font-family: 'Anek Bangla', sans-serif; /* Fuente personalizada */
+        text-transform: capitalize; /* Capitalizar la primera letra */
+        padding: 5px; /* Espaciado interno */
+        text-align: center; /* Centrar el texto */
+    }
+
+    .fc-col-header-cell{
+        background-color: #D7D7FF;
+    }
+}
+
+.fc-timegrid-axis{
+    padding: 1rem;
+    margin: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-actions {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+/* Botones de acción */
+.calendar-actions-left {
+    display: flex;
+    gap: 10px; /* Espaciado entre los botones */
+}
+
+.nav-button {
+    background-color: #1d4ed8; /* Fondo azul oscuro */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 50%; /* Forma circular */
+    width: 40px; /* Ancho del botón */
+    height: 40px; /* Alto del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cursor de puntero */
+    transition: background-color 0.3s ease; /* Transición suave */
+    font-size: 20px; /* Tamaño del ícono */
+}
+
+.nav-button:hover {
+    background-color: #1e40af; /* Fondo azul más oscuro al pasar el mouse */
+}
+
+.calendar-actions-right {
+    display: flex;
+    gap: 10px; /* Espaciado entre los botones */
+}
+
+.calendar-actions .btn-edit,
+.calendar-actions .btn-new {
+    background-color: #e0e7ff; /* Fondo azul claro */
+    color: #1d4ed8; /* Texto azul oscuro */
+    border: none; /* Sin bordes */
+    font-family: 'Anek Bangla', sans-serif; /* Fuente personalizada */
+    padding: 8px 16px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Botón "Nuevo Horario" con estilo diferente */
+.calendar-actions .btn-new {
+    background-color: #1d4ed8; /* Fondo azul oscuro */
+    color: white; /* Texto blanco */
+}
+
+/* Efecto hover para los botones */
+.calendar-actions .btn-edit:hover {
+    background-color: #c7d2fe; /* Fondo azul más claro al pasar el mouse */
+    color: #1e40af; /* Texto azul más oscuro */
+}
+
+.calendar-actions .btn-new:hover {
+    background-color: #1e3a8a; /* Fondo azul más oscuro al pasar el mouse */
+}
+
+
+
+
+
+
