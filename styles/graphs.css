@@ -53,3 +53,27 @@
     max-width: 350px;
     max-height: 350px;
 }
+
+#incidents-table{
+    margin: 30px 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 1px #e5e5e5;
+    background-color: #e5e5e5;
+}
+
+#incidents-table thead{
+    background-color: #e5e5e5;
+}
+
+#incidents-table tbody{
+    background-color: #FFFFFF;
+}
+
+#lCorner{
+    border-radius: 0px 0px 0px 8px;
+}
+
+#rCorner{
+    border-radius: 0px 0px 8px 0px;
+}
