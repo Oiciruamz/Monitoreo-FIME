@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sistema de Monitoreo de Accesos</title>
         <link rel="stylesheet" href="styles/inicio.css">
+        <link rel="stylesheet" href="./styles/reporte.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&display=swap" >
@@ -44,10 +45,9 @@
                     <span class="notification-count">1</span>
                 </div>
             </header>
-            <div class="content-container">      
+            <div class="containerReporte">      
                         <div class="report-form">
-                            <h2>Reporte de Acceso No Autorizado</h2>
-                            <p id="ID-Reporte">ID del reporte: <strong>1292u4240</strong> </p> 
+                            <p id="ID-Reporte">ID del reporte: <br> <strong>1292u4240</strong> </p> 
                             <form>
                                 <div class="form-group">
                                     <label for="fecha-hora">Fecha y Hora:</label>
@@ -65,6 +65,10 @@
                                 </div>
                                 <h3>Detalles del Acceso No Autorizado</h3>
                                 <div class="form-group">
+                                    <label for="fecha-hora">Fecha y Hora:</label>
+                                    <input type="text" id="fecha-hora" name="fecha-hora">
+                                </div>
+                                <div class="form-group">
                                     <label for="duracion">Duración:</label>
                                     <input type="text" id="duracion" name="duracion">
                                 </div>
@@ -73,30 +77,106 @@
                                     <input type="text" id="usuario-encargado" name="usuario-encargado">
                                 </div>
                                 <h3>Seguimiento</h3>
+                                <div class="form-rowSeguimiento">
+                                    <div class="form-group">
+                                        <label for="hora">Hora:</label>
+                                        <input type="text" id="hora" name="hora">
+                                    </div>
                                 <div class="form-group">
                                     <label for="notificacion">Notificación:</label>
                                     <input type="text" id="notificacion" name="notificacion">
                                 </div>
+                            </div>
                                 <div class="form-group">
-                                    <label for="hora">Hora:</label>
-                                    <input type="text" id="hora" name="hora">
+                                    <label for="personaNotificada">Persona Notificada:</label>
+                                    <input type="text" id="personaNotificada" name="personaNotificada"></input>
                                 </div>
                                 <div class="form-group">
                                     <label for="comentarios">Comentarios:</label>
                                     <textarea id="comentarios" name="comentarios"></textarea>
                                 </div>
-                                <button type="submit">Generar Reporte</button>
+                                <button type="submit"> <span class="material-symbols-outlined">summarize</span> Generar Reporte</button>
                             </form>
                         </div>
-                        <div class="report-history">
-                            <h3>Historial de Reportes</h3>
-                            <div class="report-item">
-                            <p>Id Reporte: 1931401WOCO</p>
-                            <p>Hora: 9:30 Fecha: 02/03/2023</p>
-                            <p>Usuario Responsable: Héctor Martín</p>
-                            <p>Persona Notificada: Alfonso Herrero</p>
+                        <div class="conteinerhistory">
+                            <div class="vistaprevia">
+                                <h2>Reporte</h2>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente optio nemo debitis eos minus. Ex labore porro iusto quis dolore magnam quisquam aspernatur debitis? Voluptas alias aliquam consectetur veritatis tenetur.
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, cupiditate. Laboriosam consequatur molestias molestiae placeat, cum magnam? Cum praesentium cumque in. Odit perspiciatis voluptatibus magni a libero ut est in!
+                                <br>
+                                <br>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id laudantium nostrum consectetur quasi eum ex eos incidunt, voluptatibus illo cupiditate, ipsum cumque rem! Amet, eos aspernatur accusamus assumenda inventore tempore?
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod eveniet autem id error omnis perspiciatis voluptate libero corporis quia, numquam blanditiis odit, facere impedit aspernatur. Sapiente sint quo veniam consequuntur?
+                                <br>
+                                <br>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis enim qui, vel et, eaque magni omnis facere ducimus atque ex consequuntur dolor dicta rem, ratione inventore excepturi minus molestiae eum?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit ipsum explicabo repudiandae eveniet et eos non ex dolore beatae suscipit, asperiores libero pariatur incidunt eius inventore, odit natus? Ad, reprehenderit!
+                                </p>
+                                <div class="shadowContainer"><div class="shadow"></div><div class="clip"></div></div>
+                            </div>
+                            <div class="historyContainer">
+                                <div class="titulo">
+                                <span class="material-symbols-rounded">
+                                    history
+                                    </span>
+                                <h3>Historial</h3>
+                                </div>
+                            <div class="Reporte-list">
+                            <div class="reporte">
+                                <div class="info-section">
+                                    <div class="salon-title">
+                                        <p><b>Id Reporte:</b> 1931401WOCO</p>
+                                    </div>
+                                    <div class="details">
+                                        <div class="detail-item">
+                                            <p><b>Hora:</b> 9:30</p>
+                                        </div>
+                                        <div class="detail-item">
+                                            <p><b>Fecha:</b> 02/03/2023</p>
+                                        </div>
+                                        <div class="detail-item">
+                                            <p><b>Usuario Responasable:</b> 02/03/2025</p>
+                                        </div>
+                                        <div class="detail-item">
+                                            <p><b>Persona Notificada:</b> Alfonso</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="reporteIcon">
+                                    <span class="material-symbols-outlined">summarize</span>
+                                    <p>Reporte</p>
+                                </div>
+                            </div>
+                            <div class="reporte">
+                                <div class="info-section">
+                                    <div class="salon-title">
+                                        <p><b>Id Reporte:</b> 1931401WOCO</p>
+                                    </div>
+                                    <div class="details">
+                                        <div class="detail-item">
+                                            <p><b>Hora:</b> 9:30</p>
+                                        </div>
+                                        <div class="detail-item">
+                                            <p><b>Fecha:</b> 02/03/2023</p>
+                                        </div>
+                                        <div class="detail-item">
+                                            <p><b>Usuario Responasable:</b> 02/03/2025</p>
+                                        </div>
+                                        <div class="detail-item">
+                                            <p><b>Persona Notificada:</b> Alfonso</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="reporteIcon">
+                                    <span class="material-symbols-outlined">summarize</span>
+                                    <p>Reporte</p>
+                                </div>
                             </div>
                         </div>
+                        </div>
+
+                            </div>
+                        </div>
+                        
             </div>
         </main>    
     </div>
