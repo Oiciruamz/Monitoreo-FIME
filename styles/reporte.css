@@ -53,15 +53,16 @@
 .form-group label {
     position: absolute;
     background-color: white;
-    padding: 5px;
+    padding: 0px 5PX;
     top:-15px;
     left: 10px;
+    font-size: 1rem;
     border-radius: 10px;
     font-weight: 500;
     color: var(--text-color);
 }
 
-.form-group input[type="text"],
+.form-group input[type="text"],.form-group input[type="time"],.form-group input[type="date"],.form-group input[type="number"],
 .form-group textarea {
     width: 100%;
     padding: 0.75rem;

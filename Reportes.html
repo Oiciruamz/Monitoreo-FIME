@@ -47,11 +47,20 @@
             </header>
             <div class="containerReporte">      
                         <div class="report-form">
-                            <p id="ID-Reporte">ID del reporte: <br> <strong>1292u4240</strong> </p> 
-                            <form>
+                            <form id="formulario-reporte">
+                                <div class="form-row">
                                 <div class="form-group">
-                                    <label for="fecha-hora">Fecha y Hora:</label>
-                                    <input type="text" id="fecha-hora" name="fecha-hora">
+                                    <label for="fecha-reporte">Fecha:</label>
+                                    <input type="date" id="fecha-reporte" name="fecha-reporte">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hora-reporte">Hora:</label>
+                                    <input type="time" id="hora-reporte" name="hora-reporte">
+                                </div>
+                                <div class="form-group">
+                                    <label for="id-reporte">Id Reporte:</label>
+                                    <input type="number" id="id-reporte" name="id-reporte">
+                                </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
@@ -64,10 +73,16 @@
                                 </div>
                                 </div>
                                 <h3>Detalles del Acceso No Autorizado</h3>
-                                <div class="form-group">
-                                    <label for="fecha-hora">Fecha y Hora:</label>
-                                    <input type="text" id="fecha-hora" name="fecha-hora">
-                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fecha-acceso">Fecha:</label>
+                                        <input type="date" id="fecha-acceso" name="fecha-acceso">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hora-acceso">Hora:</label>
+                                        <input type="time" id="hora-acceso" name="hora-acceso">
+                                    </div>
+                                    </div>
                                 <div class="form-group">
                                     <label for="duracion">Duración:</label>
                                     <input type="text" id="duracion" name="duracion">
@@ -77,16 +92,6 @@
                                     <input type="text" id="usuario-encargado" name="usuario-encargado">
                                 </div>
                                 <h3>Seguimiento</h3>
-                                <div class="form-rowSeguimiento">
-                                    <div class="form-group">
-                                        <label for="hora">Hora:</label>
-                                        <input type="text" id="hora" name="hora">
-                                    </div>
-                                <div class="form-group">
-                                    <label for="notificacion">Notificación:</label>
-                                    <input type="text" id="notificacion" name="notificacion">
-                                </div>
-                            </div>
                                 <div class="form-group">
                                     <label for="personaNotificada">Persona Notificada:</label>
                                     <input type="text" id="personaNotificada" name="personaNotificada"></input>
@@ -97,6 +102,7 @@
                                 </div>
                                 <button type="submit"> <span class="material-symbols-outlined">summarize</span> Generar Reporte</button>
                             </form>
+                            <script type="module" src="./js/reporte.js"></script>
                         </div>
                         <div class="conteinerhistory">
                             <div class="vistaprevia">
@@ -120,63 +126,13 @@
                                     </span>
                                 <h3>Historial</h3>
                                 </div>
-                            <div class="Reporte-list">
-                            <div class="reporte">
-                                <div class="info-section">
-                                    <div class="salon-title">
-                                        <p><b>Id Reporte:</b> 1931401WOCO</p>
-                                    </div>
-                                    <div class="details">
-                                        <div class="detail-item">
-                                            <p><b>Hora:</b> 9:30</p>
-                                        </div>
-                                        <div class="detail-item">
-                                            <p><b>Fecha:</b> 02/03/2023</p>
-                                        </div>
-                                        <div class="detail-item">
-                                            <p><b>Usuario Responasable:</b> 02/03/2025</p>
-                                        </div>
-                                        <div class="detail-item">
-                                            <p><b>Persona Notificada:</b> Alfonso</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="reporteIcon">
-                                    <span class="material-symbols-outlined">summarize</span>
-                                    <p>Reporte</p>
-                                </div>
-                            </div>
-                            <div class="reporte">
-                                <div class="info-section">
-                                    <div class="salon-title">
-                                        <p><b>Id Reporte:</b> 1931401WOCO</p>
-                                    </div>
-                                    <div class="details">
-                                        <div class="detail-item">
-                                            <p><b>Hora:</b> 9:30</p>
-                                        </div>
-                                        <div class="detail-item">
-                                            <p><b>Fecha:</b> 02/03/2023</p>
-                                        </div>
-                                        <div class="detail-item">
-                                            <p><b>Usuario Responasable:</b> 02/03/2025</p>
-                                        </div>
-                                        <div class="detail-item">
-                                            <p><b>Persona Notificada:</b> Alfonso</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="reporteIcon">
-                                    <span class="material-symbols-outlined">summarize</span>
-                                    <p>Reporte</p>
-                                </div>
-                            </div>
+                            <div class="Reporte-list" id="Reporte-list">
+                           
                         </div>
                         </div>
 
                             </div>
-                        </div>
-                        
+                        </div>     
             </div>
         </main>    
     </div>
