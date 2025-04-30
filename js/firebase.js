@@ -1,6 +1,6 @@
 // Importa las funciones que necesitas de los SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, get, push, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
 
 // Tu configuración de Firebase
@@ -19,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+
 function leerDatos() {
   const dbRef = ref(database, 'salones/-ONCA6MFmoCbVvs0Jaj9/salones/9101/');
   get(dbRef).then((snapshot) => {
@@ -32,6 +33,42 @@ function leerDatos() {
   });
 }
 
+const datosParaEnviar = [
+  {
+    id: "SENSOR_001",
+    ip: "192.168.1.100",
+    mac: "00:AA:BB:CC:DD:01",
+    nombre: "Sensor_Temperatura_1",
+    status: "open",
+    timestamp: Date.now(), // Timestamp actual en milisegundos
+    ubicacion: "Sala",
+    valor: 25.5
+  },
+  {
+    id: "SENSOR_002",
+    ip: "192.168.1.101",
+    mac: "00:AA:BB:CC:DD:02",
+    nombre: "Sensor_Humedad_1",
+    status: "closed",
+    timestamp: Date.now() - 3600000, // Timestamp de hace una hora
+    ubicacion: "Jardín",
+    valor: 60.2
+  },
+  {
+    id: "SENSOR_003",
+    ip: "192.168.1.102",
+    mac: "00:AA:BB:CC:DD:03",
+    nombre: "Sensor_Movimiento_1",
+    status: "open",
+    timestamp: Date.now() - 7200000, // Timestamp de hace dos horas
+    ubicacion: "Entrada",
+    valor: 1
+  }
+];
+
+
+
 export { database };
+
 leerDatos();
 

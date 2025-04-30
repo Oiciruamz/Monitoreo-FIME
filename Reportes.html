@@ -13,7 +13,7 @@
     </head>
 </head>
 <body>
-    <div class="container">
+    <div id="container" class="container">
         
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -49,56 +49,56 @@
                         <div class="report-form">
                             <form id="formulario-reporte">
                                 <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fecha-reporte">Fecha:</label>
-                                    <input type="date" id="fecha-reporte" name="fecha-reporte">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hora-reporte">Hora:</label>
-                                    <input type="time" id="hora-reporte" name="hora-reporte">
-                                </div>
-                                <div class="form-group">
-                                    <label for="id-reporte">Id Reporte:</label>
-                                    <input type="number" id="id-reporte" name="id-reporte">
-                                </div>
+                                    <div class="form-group">
+                                        <label for="fecha-reporte">Fecha:</label>
+                                        <input type="date" id="fecha-reporte" name="fecha-reporte" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hora-reporte">Hora:</label>
+                                        <input type="time" id="hora-reporte" name="hora-reporte" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id-reporte">Id Reporte:</label>
+                                        <input type="number" id="id-reporte" name="id-reporte" required>
+                                    </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="ubicacion">Ubicación:</label>
-                                        <input type="text" id="ubicacion" name="ubicacion">
+                                        <input type="text" id="ubicacion" name="ubicacion" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="estado-reporte">Estado del Reporte:</label>
-                                        <input type="text" id="estado-reporte" name="estado-reporte">
-                                </div>
+                                        <input type="text" id="estado-reporte" name="estado-reporte" required>
+                                    </div>
                                 </div>
                                 <h3>Detalles del Acceso No Autorizado</h3>
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="fecha-acceso">Fecha:</label>
-                                        <input type="date" id="fecha-acceso" name="fecha-acceso">
+                                        <input type="date" id="fecha-acceso" name="fecha-acceso" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="hora-acceso">Hora:</label>
-                                        <input type="time" id="hora-acceso" name="hora-acceso">
+                                        <input type="time" id="hora-acceso" name="hora-acceso" required>
                                     </div>
-                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="duracion">Duración:</label>
-                                    <input type="text" id="duracion" name="duracion">
+                                    <input type="text" id="duracion" name="duracion" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="usuario-encargado">Usuario Responsable:</label>
-                                    <input type="text" id="usuario-encargado" name="usuario-encargado">
+                                    <input type="text" id="usuario-encargado" name="usuario-encargado" required>
                                 </div>
                                 <h3>Seguimiento</h3>
                                 <div class="form-group">
                                     <label for="personaNotificada">Persona Notificada:</label>
-                                    <input type="text" id="personaNotificada" name="personaNotificada"></input>
+                                    <input type="text" id="personaNotificada" name="personaNotificada" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comentarios">Comentarios:</label>
-                                    <textarea id="comentarios" name="comentarios"></textarea>
+                                    <textarea id="comentarios" name="comentarios" required></textarea>
                                 </div>
                                 <button type="submit"> <span class="material-symbols-outlined">summarize</span> Generar Reporte</button>
                             </form>
@@ -106,18 +106,6 @@
                         </div>
                         <div class="conteinerhistory">
                             <div class="vistaprevia">
-                                <h2>Reporte</h2>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente optio nemo debitis eos minus. Ex labore porro iusto quis dolore magnam quisquam aspernatur debitis? Voluptas alias aliquam consectetur veritatis tenetur.
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, cupiditate. Laboriosam consequatur molestias molestiae placeat, cum magnam? Cum praesentium cumque in. Odit perspiciatis voluptatibus magni a libero ut est in!
-                                <br>
-                                <br>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id laudantium nostrum consectetur quasi eum ex eos incidunt, voluptatibus illo cupiditate, ipsum cumque rem! Amet, eos aspernatur accusamus assumenda inventore tempore?
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod eveniet autem id error omnis perspiciatis voluptate libero corporis quia, numquam blanditiis odit, facere impedit aspernatur. Sapiente sint quo veniam consequuntur?
-                                <br>
-                                <br>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis enim qui, vel et, eaque magni omnis facere ducimus atque ex consequuntur dolor dicta rem, ratione inventore excepturi minus molestiae eum?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit ipsum explicabo repudiandae eveniet et eos non ex dolore beatae suscipit, asperiores libero pariatur incidunt eius inventore, odit natus? Ad, reprehenderit!
-                                </p>
-                                <div class="shadowContainer"><div class="shadow"></div><div class="clip"></div></div>
                             </div>
                             <div class="historyContainer">
                                 <div class="titulo">
@@ -135,6 +123,7 @@
                         </div>     
             </div>
         </main>    
+ 
     </div>
     <script src="js/main.js"></script>
 </body>
