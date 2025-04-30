@@ -86,6 +86,10 @@
     display: flex;
     gap: 10px; /* Espaciado entre los botones */
 }
+.calendar-filters {
+    display: flex;
+    gap: 10px; /* Espaciado entre los botones */
+}
 
 .calendar-actions .btn-edit,
 .calendar-actions .btn-new {
@@ -101,11 +105,50 @@
     transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
 }
 
+
+.calendar-filters .btn-filter{
+    border-bottom: 3px solid #e0e7ff; /* Sin bordes */
+    border-top: none; /* Sin bordes */
+    border-left: none; /* Sin bordes */
+    border-right: none; /* Sin bordes */
+    background-color: rgba(255, 255, 255, 0);
+    font-family: 'Anek Bangla', sans-serif; /* Fuente personalizada */
+    max-width: 70px; /* Espaciado interno */
+    min-width: 50px;
+    cursor: pointer; /* Cursor de puntero */
+    font-size: .9rem; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    transition: border-bottom 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+.calendar-filters  .active{
+    border-bottom: 3px solid #1d4ed8; /* Sin bordes */
+   }
+.btn-filter {
+    border-bottom: 3px solid #e0e7ff; /* Sin bordes */
+    border-top: none; /* Sin bordes */
+    border-left: none; /* Sin bordes */
+    border-right: none; /* Sin bordes */
+    background-color: rgba(255, 255, 255, 0);
+    font-family: 'Anek Bangla', sans-serif; /* Fuente personalizada */
+    max-width: 150px; /* Espaciado interno */
+    min-width: 70px;
+    cursor: pointer; /* Cursor de puntero */
+    font-size: .9rem; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    transition: border-bottom 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+.btn-filter:hover {
+    border-bottom: 3px solid #1d4ed8; /* Sin bordes */
+}
+ .active{
+    border-bottom: 3px solid #1d4ed8; /* Sin bordes */
+   }
 /* Botón "Nuevo Horario" con estilo diferente */
 .calendar-actions .btn-new {
     background-color: #1d4ed8; /* Fondo azul oscuro */
     color: white; /* Texto blanco */
 }
+
 
 /* Efecto hover para los botones */
 .calendar-actions .btn-edit:hover {
@@ -119,6 +162,43 @@
 
 
 
+#calendar-container {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
 
+/* Estilos para los encabezados de día */
+.fc-col-header-cell {
+    background-color: #f8f9fa !important;
+    font-weight: bold !important;
+}
 
+.fc-col-header-cell-cushion {
+    padding: 10px 0 !important;
+    color: #333 !important;
+    text-decoration: none !important;
+}
 
+/* Estilos para los eventos */
+.fc-event {
+    font-size: .7rem !important;
+    color: #000000 !important;
+    border-radius: 6px !important;
+    border: none !important;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.fc-event:hover {
+    transform: translateY(-2px) !important;
+    background-color: #1d4ed8 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    z-index: 100 !important;
+}
+
+.fc-timegrid-event-harness .fc-event-main {
+    padding: 4px 8px !important;
+}
