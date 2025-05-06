@@ -20,55 +20,36 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 
-function leerDatos() {
-  const dbRef = ref(database, 'salones/-ONCA6MFmoCbVvs0Jaj9/salones/9101/');
-  get(dbRef).then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log('Datos:', snapshot.val());
-    } else {
-      console.log("No hay datos disponibles.");
-    }
-  }).catch((error) => {
-    console.error("Error al leer los datos:", error);
-  });
-}
+const datosParaEnviar = {
 
-const datosParaEnviar = [
-  {
     id: "SENSOR_001",
     ip: "192.168.1.100",
     mac: "00:AA:BB:CC:DD:01",
-    nombre: "Sensor_Temperatura_1",
+    nombre: "Sensor 1",
     status: "open",
-    timestamp: Date.now(), // Timestamp actual en milisegundos
-    ubicacion: "Sala",
+    timestamp: Date.now(), 
+    ubicacion: "9101",
     valor: 25.5
-  },
-  {
-    id: "SENSOR_002",
-    ip: "192.168.1.101",
-    mac: "00:AA:BB:CC:DD:02",
-    nombre: "Sensor_Humedad_1",
-    status: "closed",
-    timestamp: Date.now() - 3600000, // Timestamp de hace una hora
-    ubicacion: "Jardín",
-    valor: 60.2
-  },
-  {
-    id: "SENSOR_003",
-    ip: "192.168.1.102",
-    mac: "00:AA:BB:CC:DD:03",
-    nombre: "Sensor_Movimiento_1",
-    status: "open",
-    timestamp: Date.now() - 7200000, // Timestamp de hace dos horas
-    ubicacion: "Entrada",
-    valor: 1
-  }
-];
+  
+};
+function datosaEnviar() {
+  const referencia = ref(database, 'sensores/');
+  const nuevoReporteRef = push(referencia);
+  set(nuevoReporteRef, datosParaEnviar)
+    .then(() => {
+      alert("✅ Reporte guardado correctamente");
+      location.reload(true);
+    })
+    .catch((error) => {
+      console.error("❌ Error al guardar:", error);
+    });
+}
+
 
 
 
 export { database };
 
-leerDatos();
+
+
 

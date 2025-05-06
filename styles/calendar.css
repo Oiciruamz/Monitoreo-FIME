@@ -27,22 +27,20 @@
 }
 
 
-.fc {
-
-    & .fc-col-header-cell-cushion {
-        font-weight: normal; /* Quitar negrita */
-        font-size: 14px; /* Tamaño de fuente */
-        color: #333; /* Color del texto */
-        font-family: 'Anek Bangla', sans-serif; /* Fuente personalizada */
-        text-transform: capitalize; /* Capitalizar la primera letra */
-        padding: 5px; /* Espaciado interno */
-        text-align: center; /* Centrar el texto */
-    }
-
-    .fc-col-header-cell{
-        background-color: #D7D7FF;
-    }
+.fc .fc-col-header-cell-cushion {
+    font-weight: normal;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Anek Bangla', sans-serif;
+    text-transform: capitalize;
+    padding: 5px;
+    text-align: center;
 }
+
+.fc .fc-col-header-cell {
+    background-color: #D7D7FF;
+}
+
 
 .fc-timegrid-axis{
     padding: 1rem;
@@ -143,24 +141,94 @@
  .active{
     border-bottom: 3px solid #1d4ed8; /* Sin bordes */
    }
-/* Botón "Nuevo Horario" con estilo diferente */
+
 .calendar-actions .btn-new {
-    background-color: #1d4ed8; /* Fondo azul oscuro */
-    color: white; /* Texto blanco */
-}
-
-
-/* Efecto hover para los botones */
-.calendar-actions .btn-edit:hover {
-    background-color: #c7d2fe; /* Fondo azul más claro al pasar el mouse */
-    color: #1e40af; /* Texto azul más oscuro */
+    background-color: #1d4ed8; 
+    color: white; 
 }
 
 .calendar-actions .btn-new:hover {
     background-color: #1e3a8a; /* Fondo azul más oscuro al pasar el mouse */
 }
 
+/*Estilos Calendario*/
+.fc-header-toolbar .fc-button{
+    background-color: #1d4ed8 !important; 
+    color: white  !important; 
+    border: none !important;
+}
+.fc-header-toolbar .fc-button-active{
+    background-color: white !important; 
+    color:  #1d4ed8 !important; 
+    border: #1d4ed8 1px solid !important;
+    
+}
+.fc-header-toolbar button:hover{
+    background-color: white !important; 
+    color:  #1d4ed8 !important; 
+    border: #1d4ed8 1px solid !important;
+}
+.fc-col-header-cell.fc-day{
+    background-color: #1d4ed8 !important; 
+    border: none !important;
+}
+.fc-col-header-cell.fc-day a{
+    color: white  !important; 
+}
+.fc-day-today{
+    background-color: rgba(29, 79, 216, 0.1) !important; 
+}
+.fc-day{ 
+    border: rgba(29, 79, 216, 0.3) 1px solid !important; 
+}
+.fc-timegrid-slots  .fc-timegrid-slot-lane{
+    border: rgba(29, 79, 216, 0.3) 1px solid !important; 
+}
+.fc-direction-ltr .fc-timegrid-slot-label-frame {
+    background-color: #1d4ed8 !important; 
+    color: white  !important; 
+    border: none !important;
+    text-align: left !important;
+}
+.fc-popover {
+    background-color: white !important;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
 
+  .fc-timegrid-slot {
+    height: 50px !important;
+  }
+
+  .fc-timegrid-event-harness {
+    height: auto !important;
+  }
+  
+
+  .fc-timegrid-event {
+    margin: 2px 0;
+    min-height: 45px !important; /* Altura mínima para los eventos */
+    max-height: none !important; /* Quitar altura máxima */
+  }
+  .fc-event {
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: .7rem;
+    color: white;
+  }
+  
+
+  .fc-event-title {
+    font-weight: bold;
+  }
+  
+ 
+  .fc-event.profesor-matematicas {
+    background-color: #f39c12;
+  }
 
 #calendar-container {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -170,35 +238,111 @@
     margin-bottom: 30px;
 }
 
-/* Estilos para los encabezados de día */
-.fc-col-header-cell {
-    background-color: #f8f9fa !important;
-    font-weight: bold !important;
+/*Estilos Modal Evento*/
+.modalInformacion{
+    position:fixed;
+    width: 100%;
+    height:100vh ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(5px);
+    z-index:99 ;
+   
 }
+.botonCerrar{
+    position:absolute;
+    top: 3%;
+    right: 3%;
+    backdrop-filter: blur(5px);
+    z-index:101 ;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
 
-.fc-col-header-cell-cushion {
-    padding: 10px 0 !important;
-    color: #333 !important;
-    text-decoration: none !important;
 }
-
-/* Estilos para los eventos */
-.fc-event {
-    font-size: .7rem !important;
-    color: #000000 !important;
-    border-radius: 6px !important;
-    border: none !important;
-    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.3) !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+.modalInformacion .infoContainer{
+    position:relative;
+    width: 60%;
+    height:auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(5px);
+    background-color: white;
+    z-index: 100;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between;
+   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
 }
-
-.fc-event:hover {
-    transform: translateY(-2px) !important;
-    background-color: #1d4ed8 !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
-    z-index: 100 !important;
+.modalInformacion .infoContainer .botonesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
+.modalInformacion .infoContainer .botonesContainer button{
+    background-color: #000099;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+.modalInformacion .infoContainer .botonesContainer button:nth-child(1){
+    background-color: #ff0000;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        padding: 1rem;
+    }
 
-.fc-timegrid-event-harness .fc-event-main {
-    padding: 4px 8px !important;
+    .main-content {
+        margin-left: 60px;
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-menu span {
+        display: none;
+    }
+} 
+
+
+/* Estilos Formulario Horario*/
+#horarioForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+label {
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    color: #000099;
+    flex:2
+}
+input{
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    color: var(--text-color);
+    flex: 5;
+}
+.InputContainers{
+    display: flex;
 }
