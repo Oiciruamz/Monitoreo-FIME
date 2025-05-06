@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="styles/calendar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js
+"></script>
+
+     <style>
+   
+  </style>
 </head>
 <body>
     <div class="container">
@@ -34,7 +39,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="main-content">
+        <main id="container" class="main-content">
             <header class="header">
                 <div class="notifications">
                     <span class="material-symbols-outlined" style="font-size: 2rem;">notifications</span>
@@ -49,14 +54,7 @@
                 </div>
 
                 <div class="calendar-actions">
-                    <div class="calendar-actions-left">
-                        <button id="prev-week" class="nav-button">
-                            <span class="material-symbols-outlined">chevron_left</span>
-                        </button>
-                        <button id="next-week" class="nav-button">
-                            <span class="material-symbols-outlined">chevron_right</span>
-                        </button>
-                    </div>
+                   
                     <div class="calendar-filters" id="calendar-filters">
                         <button class="btn-filter" id="9101">9101</button>
                         <button class="btn-filter" id="9102">9102</button>
@@ -65,13 +63,12 @@
                     </div>
                     
                     <button class="btn-filter" id="All">Todos los Salones</button>
-
                     <div class="calendar-actions-right">
-                        <button class="btn-edit">Editar Horario</button>
                         <button class="btn-new">Nuevo Horario</button>
                     </div>
+
                 </div>
-                
+               
                 <div id='calendar'></div>
             </div>
         </main>
