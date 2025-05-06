@@ -2,6 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getDatabase, ref, get, push, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+import { serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
 
 // Tu configuración de Firebase
 const firebaseConfig = {
@@ -25,10 +27,11 @@ const datosParaEnviar = {
     id: "SENSOR_001",
     ip: "192.168.1.100",
     mac: "00:AA:BB:CC:DD:01",
-    nombre: "Sensor 1",
-    status: "open",
-    timestamp: Date.now(), 
+    nombre: "Sensor - 9102",
+    status: "Abierto",
+    timestamp:serverTimestamp(), 
     ubicacion: "9101",
+    alarmaActiva:true,
     valor: 25.5
   
 };
@@ -44,7 +47,6 @@ function datosaEnviar() {
       console.error("❌ Error al guardar:", error);
     });
 }
-
 
 
 

@@ -4,47 +4,115 @@ import { database } from "./firebase.js";
 import { ref, get } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const alertaref=  ref(database, 'sensores');
-
+const horariosref= ref(database,'horarios')
 let html;
 let cont;
+let horasTotales=[]
+function salonesenClase(enClase,sinClase) {
+    get(horariosref)
+    .then((snapshots)=>{
+        if(snapshots.exists()){
+            const salones=snapshots.val()
+            Object.values(salones).forEach(salon =>{
+                Object.values(salon).forEach(dia =>{
+                    Object.values(dia).forEach(hora =>{
+                      const horasformato={
+                        salon: hora.salon,
+                        horaInicio: hora.horaInicio,
+                        horaFin:hora.horaFin
+                      }
+                      horasTotales.push(horasformato)
+                    })
+                })
+            })
+
+        }
+        let horasClase = 0;
+        let horasSinClase = 0;
+        const fecha = new Date();
+        const horaActual = fecha.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        horasTotales.forEach(horario => { 
+            if (horario.horaInicio < horaActual && horaActual < horario.horaFin) {
+                horasClase++;
+            } else {
+                horasSinClase++;
+            }
+        });
+        console.log(`Salones en clase: ${horasClase} Salones sin clase: ${horasSinClase} Total de clases: ${horasTotales.length}`);
+        sinClase.textContent = `${horasSinClase}`;
+        enClase.textContent = `${horasClase}`;
 
 
-function createAlertCard() {
+    }).catch(error =>{
+        console.error("Error al obtener horarios:", error);
+    })
+}
+
+function createAlertCard() {  
     get(alertaref).then((snapshots) => {
         if (snapshots.exists()) {
             const alertaData = snapshots.val();
-            html = `<h2>Alertas De Acceso</h2>
-                   `;
-            cont = 0;
-
-            Object.values(alertaData).forEach(alerta => {
-               
-                html += `  
-                    <div class="alert-card">
-                        <div class="alert-header">
-                            <span><b>Salón:</b> ${alerta.ubicacion}</span>
-                            <span class="material-symbols-outlined">more_vert</span>
-                        </div>
-                        <div class="alert-animation">
-                            <span class="circle"></span>
-                            <span class="circle"></span>
-                            <span class="circle"></span>
-                            <span class="circle"></span>
-                            <span class="material-symbols-rounded">warning</span>
-                        </div>
-                        <div class="alert-body">
-                            <h3>${alerta.status}</h3>
-                            <p><b>Se abrió:</b> ${cont} vez</p>
-                        </div>
-                        <div class="alert-actions">
-                            <button class="btn-desactivar">Desactivar</button>
-                            <button class="btn-notificar">Notificar</button>
-                        </div>
-                    </div>`;
+            let html = `<h2>Alertas De Acceso</h2>`;
+            const alertasArray = Object.values(alertaData);
+    
+            get(horariosref).then((horariosSnapshots) => {
+                const horariosData = horariosSnapshots.val();
+                if (horariosData) {
+                    alertasArray.forEach(alerta => {
+                        const timestampAlarma = alerta.timestamp;
+                        const fechaAlarma = new Date(timestampAlarma);
+                        const horaAlarma = fechaAlarma.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                        const diaSemanaAlarma = fechaAlarma.getDay(); // 0 (Domingo) - 6 (Sábado)
+                        const salonAlarma = alerta.ubicacion;
+                        let eventoEncontrado = false;
+                        if (horariosData[salonAlarma]) {
+                            const horariosSalon = horariosData[salonAlarma];
+                            Object.values(horariosSalon).forEach(dias => {
+                                Object.values(dias).forEach(infoHorario => {
+                                    // Verificar si el día de la semana coincide
+                                    if (infoHorario.daysOfWeek && infoHorario.daysOfWeek.includes(diaSemanaAlarma === 0 ? 7 : diaSemanaAlarma)) { // Ajustar Domingo (0) a 7 para comparación
+                                        // Verificar si la hora de la alarma está dentro del rango del evento
+                                        if (horaAlarma >= infoHorario.horaInicio && horaAlarma <= infoHorario.horaFin) {
+                                            eventoEncontrado = true;
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                        if (!eventoEncontrado && alerta.alarmaActiva==true) {
+                            const fechaAlarmaFormateada = fechaAlarma.toLocaleDateString();
+                            html += `
+                                <div class="alert-card">
+                                    <div class="alert-header">
+                                        <span><b>Salón:</b> ${salonAlarma}</span>
+                                        <span class="material-symbols-outlined">more_vert</span>
+                                    </div>
+                                    <div class="alert-animation">
+                                        <span class="circle"></span>
+                                        <span class="circle"></span>
+                                        <span class="circle"></span>
+                                        <span class="circle"></span>
+                                        <span class="material-symbols-rounded">warning</span>
+                                    </div>
+                                    <div class="alert-body">
+                                        <h3>${alerta.status}</h3>
+                                        <p><b>Acceso no Autorizado:</b> ${fechaAlarmaFormateada} - ${horaAlarma}</p>
+                                    </div>
+                                    <div class="alert-actions">
+                                        <button class="btn-desactivar">Desactivar</button>
+                                        <button class="btn-notificar">Notificar</button>
+                                    </div>
+                                </div>`;
+                        }
+                    });
+                    document.querySelector(".alerts-container").innerHTML = html;
+                } else {
+                    document.querySelector(".alerts-container").innerHTML = "No hay horarios disponibles.";
+                }
+            }).catch(error => {
+                console.error("Error al obtener horarios:", error);
+                document.querySelector(".alerts-container").innerHTML = "Error al cargar los horarios.";
             });
-
-           
-            document.querySelector(".alerts-container").innerHTML = html;
         } else {
             document.querySelector(".alerts-container").innerHTML = "No hay alertas.";
         }
@@ -82,10 +150,13 @@ function updateRecentActivity() {
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOMContentLoaded");  // Agregado console.log
-    createAlertCard(); // Llamar a la función para mostrar las alertas
+    console.log("DOMContentLoaded"); 
+    const enClase = document.getElementById("salonesenClase");
+    const sinClase = document.getElementById("salonessinClase");
+    createAlertCard(); 
     createAccessChart();
     createTimeChart();
+    salonesenClase(enClase,sinClase);
     updateRecentActivity();
     // Event listener para los botones de alerta
     const alertsContainer = document.querySelector('.alerts-container'); // Mover fuera del evento
