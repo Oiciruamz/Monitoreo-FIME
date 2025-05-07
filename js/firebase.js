@@ -24,16 +24,16 @@ const database = getDatabase(app);
 
 const datosParaEnviar = {
 
-    id: "SENSOR_001",
-    ip: "192.168.1.100",
-    mac: "00:AA:BB:CC:DD:01",
-    nombre: "Sensor - 9102",
-    status: "Abierto",
-    timestamp:serverTimestamp(), 
-    ubicacion: "9101",
-    alarmaActiva:true,
-    valor: 25.5
-  
+  id: "SENSOR_001",
+  ip: "192.168.1.100",
+  mac: "00:AA:BB:CC:DD:01",
+  nombre: "Sensor - 9102",
+  status: "Abierto",
+  timestamp: serverTimestamp(),
+  ubicacion: "9101",
+  alarmaActiva: true,
+  valor: 25.5
+
 };
 function datosaEnviar() {
   const referencia = ref(database, 'sensores/');
@@ -53,5 +53,4 @@ function datosaEnviar() {
 export { database };
 
 
-
-
+window.probarAlerta = datosaEnviar;
