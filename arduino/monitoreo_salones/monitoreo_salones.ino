@@ -4,17 +4,19 @@
 #include <WiFiUdp.h>
 
 // Configuración del WiFi
-#define WIFI_SSID "" // Importante
-#define WIFI_PASSWORD "" // Importante
+#define WIFI_SSID  "OnePlus Nord 3 5G"
+#define WIFI_PASSWORD "123456789"
 
 // Configuración de Firebase
-#define FIREBASE_HOST "" // Importante
-#define FIREBASE_API_KEY "" // Importante
+#define FIREBASE_HOST "monitoreo-5a969-default-rtdb.firebaseio.com"
+#define FIREBASE_API_KEY "AIzaSyA2ua_OCt1iEi3K3rh0PzqvbX483JmaoTA"
 
 // Configuración del sensor
 #define FOTOSENSOR_PIN A0
-#define DEVICE_NAME "Sensor_1"
-#define DEVICE_LOCATION "Sala"
+#define DEVICE_ID "SENSOR_001"
+#define DEVICE_NAME "Sensor - 9102"
+#define DEVICE_LOCATION "9101"
+#define ALARMA_ACTIVA true
 
 // Objetos de Firebase
 FirebaseData firebaseData;
@@ -26,36 +28,26 @@ FirebaseJson json;
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org");
 
-String deviceID = "";
-
 void setup() {
   Serial.begin(115200);
-  
   pinMode(FOTOSENSOR_PIN, INPUT);
-  
+
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Conectando a WiFi");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
   }
-  
+
   Serial.println("\nConectado con IP: " + WiFi.localIP().toString());
-  
-  // ID único basado en MAC
-  deviceID = WiFi.macAddress();
-  deviceID.replace(":", "");
 
-  // Inicializar NTP
   timeClient.begin();
-  timeClient.setTimeOffset(0);
+  timeClient.setTimeOffset(0); // UTC
 
-  // Configurar Firebase
   config.database_url = FIREBASE_HOST;
   config.api_key = FIREBASE_API_KEY;
   Firebase.begin(&config, &auth);
 
-  // Autenticación anónima
   if (Firebase.signUp(&config, &auth, "", "")) {
     Serial.println("Autenticación anónima exitosa");
   } else {
@@ -65,56 +57,58 @@ void setup() {
 
   Firebase.reconnectWiFi(true);
 
-  // Registrar dispositivo en Firebase
   registrarDispositivo();
 }
 
 void loop() {
   timeClient.update();
-  
+
   int valorLuz = analogRead(FOTOSENSOR_PIN);
   Serial.print("Valor del fotosensor: ");
   Serial.println(valorLuz);
 
-  // Llamar a la función para actualizar Firebase
   enviarDatosFirebase(valorLuz);
 
-  delay(60000); // Enviar datos cada minuto
+  delay(1000);
 }
 
 void registrarDispositivo() {
   json.clear();
-  json.add("id", deviceID);
+  json.add("id", DEVICE_ID);
   json.add("nombre", DEVICE_NAME);
   json.add("ubicacion", DEVICE_LOCATION);
   json.add("mac", WiFi.macAddress());
   json.add("ip", WiFi.localIP().toString());
+  json.add("alarmaActiva", ALARMA_ACTIVA);
+  json.add("valor", analogRead(FOTOSENSOR_PIN));
+  
+  String statusStr = analogRead(FOTOSENSOR_PIN) <= 200 ? "Cerrado" : "Abierto";
+  json.add("status", statusStr);
 
-  String path = "/sensores/" + deviceID;
+  String path = "/sensores/" + String(DEVICE_ID);
 
-  if (Firebase.updateNode(firebaseData, path, json)) {
-    Serial.println("Dispositivo registrado correctamente en Firebase");
+  if (Firebase.set(firebaseData, path, json)) {
+    Serial.println("Dispositivo registrado correctamente");
   } else {
-    Serial.print("Error al registrar dispositivo: ");
-    Serial.println(firebaseData.errorReason());
+    Serial.println("Error al registrar dispositivo: " + firebaseData.errorReason());
   }
+
+  // Enviar timestamp por separado con serverTimestamp()
+  Firebase.setTimestamp(firebaseData, path + "/timestamp");
 }
 
 void enviarDatosFirebase(int valorLuz) {
-  // Obtener timestamp actual
-  unsigned long timestamp = timeClient.getEpochTime();
-  
   json.clear();
   json.add("valor", valorLuz);
-  json.add("timestamp", timestamp);
-  
-  // Ruta donde se actualizarán los datos del sensor
-  String path = "/sensores/" + deviceID;
+  json.add("status", valorLuz <= 200 ? "Cerrado" : "Abierto");
+
+  String path = "/sensores/" + String(DEVICE_ID);
 
   if (Firebase.updateNode(firebaseData, path, json)) {
-    Serial.println("Datos actualizados en Firebase correctamente");
+    Serial.println("Datos actualizados correctamente");
   } else {
-    Serial.print("Error al actualizar datos: ");
-    Serial.println(firebaseData.errorReason());
+    Serial.println("Error al actualizar datos: " + firebaseData.errorReason());
   }
+
+  Firebase.setTimestamp(firebaseData, path + "/timestamp");
 }
